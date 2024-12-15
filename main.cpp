@@ -1,12 +1,13 @@
 #include <sdl.h>
 #undef main  // Undefine main for SDL2 to work with main function
-#include <stdio.h>
+#include <SDL_ttf.h>
 #include <stdlib.h>
 #include <time.h>
+#include <iostream>
 
 constexpr auto WINDOW_WIDTH = 800;
 constexpr auto WINDOW_HEIGHT = 600;
-constexpr auto ARRAY_SIZE = 100;
+constexpr auto ARRAY_SIZE = 400;
 #define BAR_WIDTH (WINDOW_WIDTH / ARRAY_SIZE)
 
 struct Color {
@@ -17,6 +18,10 @@ struct Color {
 
 Color barClr = {
     0, 255, 0
+};
+
+Color barFinalClr = {
+	0, 0, 255
 };
 
 Color compClr = {
@@ -39,16 +44,17 @@ void bubble_sort_visualized(SDL_Surface* surface, SDL_Window* window, int* array
     int temp;
 	SDL_Event event;
     // Bubble sort algorithm
+    // event loop thread
     for (int i = 0; i < ARRAY_SIZE - 1; i++) {
-		while (SDL_PollEvent(&event)) {
-			if (event.type == SDL_QUIT) {
-				SDL_DestroyWindow(window);
-				SDL_Quit();
-				exit(0);
-			}
-		}
         swapped = 0;
         for (int j = 0; j < ARRAY_SIZE - i - 1; j++) {
+			while (SDL_PollEvent(&event)) {
+				if (event.type == SDL_QUIT) {
+					SDL_DestroyWindow(window);
+					SDL_Quit();
+					exit(0);
+				}
+			}
             // Highlight the two bars being compared
             SDL_Rect rect1 = { j * BAR_WIDTH, WINDOW_HEIGHT - array[j], BAR_WIDTH, array[j] };
             SDL_Rect rect2 = { (j + 1) * BAR_WIDTH, WINDOW_HEIGHT - array[j + 1], BAR_WIDTH, array[j + 1] };
@@ -130,7 +136,15 @@ int main() {
 
     // Perform the bubble sort with visualization
     bubble_sort_visualized(surface, window, array);
+	SDL_UpdateWindowSurface(window);
 
+	// draw the final bars with a different color
+	for (int i = 0; i < ARRAY_SIZE; i++) {
+		SDL_Rect rect = { i * BAR_WIDTH, WINDOW_HEIGHT - array[i], BAR_WIDTH, array[i] };
+		SDL_FillRect(surface, &rect, SDL_MapRGB(surface->format, barFinalClr.r, barFinalClr.g, barFinalClr.b));  // Green color
+		SDL_UpdateWindowSurface(window);
+        SDL_Delay(BAR_WIDTH);
+	}
     // Wait before quitting
     SDL_Event e;
     while (true) {
