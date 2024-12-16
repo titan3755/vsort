@@ -1,7 +1,6 @@
 # vsort
 A simple sorting algorithm visualizer using SDL2 and C++
 
-
 # Feature Additions
 --> Bubble sort prototype added <br>
 --> Selection sort prototype added <br>
@@ -22,5 +21,7 @@ A simple sorting algorithm visualizer using SDL2 and C++
 --> (...) New bug fixes go here > <br>
 
 // Development will cease and the application will enter production upon completion of these feature additions //
+
+** Development cease, application is ready for production
 
 
