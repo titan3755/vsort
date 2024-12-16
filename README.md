@@ -22,7 +22,9 @@ A simple sorting algorithm visualizer using SDL2 and C++
 # Bug Fixes
 --> Fixed final array render bug (some of the rectangles remained green instead of blue) <br>
 --> Fixed window title freezing bug (by making the framerate function run in the main thread) <br>
---> (...) New bug fixes go here > <br>
+--> Fixed an event handling bug (the window freezes due to unhandled events) <br>
+--> Fixed unreadable text (by changing the text color and position) <br>
+--> (...) New bug fixes go here > 
 
 # Downloads
 --> Mediafire link for VS2022 project: [https://www.mediafire.com/file/8g9qsuwqcr5azha/vsort-sdl2.7z/file](https://www.mediafire.com/file/8g9qsuwqcr5azha/vsort-sdl2.7z/file) <br>
