@@ -5,15 +5,18 @@ A simple sorting algorithm visualizer using SDL2 and C++
 --> Bubble sort prototype added <br>
 --> Selection sort prototype added <br>
 --> Insertion sort prototype added <br>
+--> Quick sort prototype added <br>
+--> Merge sort prototype added <br>
+--> Optimized the algorithms and general code <br>
 --> Hardware accelerated graphics functionality added <br>
 --> Minor adjustments and QOL changes
 
-# To Do
+# To Do (All done)
 --> Make the graphics hardware accelerated (done) <br>
---> Implement at least five other sorting algorithms (3 of 5 done) <br>
---> Change visualizations based on user input <br>
---> Add very simple GUI components <br>
---> Fix bugs (check commit history and descriptions) (mostly done)
+--> Implement at least five other sorting algorithms (5 of 5 done) <br>
+--> Change visualizations based on user input (done) <br>
+--> Add very simple GUI components (done) <br>
+--> Fix bugs (check commit history and descriptions) (done)
 
 # Bug Fixes
 --> Fixed final array render bug (some of the rectangles remained green instead of blue) <br>
