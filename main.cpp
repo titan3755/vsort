@@ -347,6 +347,8 @@ void counting_sort_visualized(SDL_Renderer* renderer, SDL_Window* window, SDL_Ev
 	}
 
 	for (int i = 0; i < ARRAY_SIZE; i++) {
+		event_handler(event, renderer, window);
+		setWindowTitleAccordingToFramerateAndTimeElapsed(window);
 		array[i] = output[i];
 		(*write_count)++;
 
@@ -563,9 +565,6 @@ int main() {
 
 	while (true) {
 
-		// get time at start of program
-		auto start = std::chrono::high_resolution_clock::now();
-
 		// screen flush
 		SDL_SetRenderDrawColor(renderer, windowClr.r, windowClr.g, windowClr.b, 255);
 		SDL_RenderClear(renderer);
@@ -637,6 +636,7 @@ int main() {
 		SDL_RenderCopy(renderer, textTexture2, NULL, &textRect2);
 
 		// display some more text regarding the settings file and array size values
+		textColor = { 255, 0, 0 };
 		char text[100];
 		sprintf_s(text, "ARRAY_SIZE: %d , WINDOW_WIDTH: %d", ARRAY_SIZE, WINDOW_WIDTH);
 		SDL_Surface* textSurface3 = TTF_RenderText_Solid(font, text, textColor);
@@ -670,7 +670,7 @@ int main() {
 			SDL_Quit();
 			return -1;
 		}
-		SDL_Rect textRect3 = { 10, 50, textSurface3->w, textSurface3->h };
+		SDL_Rect textRect3 = { 10, 70, textSurface3->w, textSurface3->h };
 		SDL_RenderCopy(renderer, textTexture3, NULL, &textRect3);
 
 		// display text regarding settings file
@@ -709,7 +709,7 @@ int main() {
 			SDL_Quit();
 			return -1;
 		}
-		SDL_Rect textRect4 = { 10, 70, textSurface4->w, textSurface4->h };
+		SDL_Rect textRect4 = { 10, 90, textSurface4->w, textSurface4->h };
 		SDL_RenderCopy(renderer, textTexture4, NULL, &textRect4);
 
 		// display text regarding the program
@@ -752,7 +752,7 @@ int main() {
 			SDL_Quit();
 			return -1;
 		}
-		SDL_Rect textRect5 = { 10, 90, textSurface5->w, textSurface5->h };
+		SDL_Rect textRect5 = { 10, 110, textSurface5->w, textSurface5->h };
 		SDL_RenderCopy(renderer, textTexture5, NULL, &textRect5);
 
 		// render an image below the text
@@ -799,7 +799,7 @@ int main() {
 			SDL_Quit();
 			return -1;
 		}
-		SDL_Rect imageRect = { 80, 140, imageSurface->w, imageSurface->h };
+		SDL_Rect imageRect = { 80, 150, imageSurface->w, imageSurface->h };
 		SDL_RenderCopy(renderer, imageTexture, NULL, &imageRect);
 
 		// present the renderer
@@ -916,12 +916,18 @@ int main() {
 		SDL_SetRenderDrawColor(renderer, barClr.r, barClr.g, barClr.b, 255);
 		draw_bars(renderer, array);
 		SDL_RenderPresent(renderer);
-		SDL_Delay(1000);  // Delay to let the user see the initial state
+		for (int i = 0; i <= 1000; i++) {
+			event_handler(&e, renderer, window);
+			SDL_Delay(1);
+		}
 
 		// define array read, write and comparison counts
 		int read_count = 0;
 		int write_count = 0;
 		int comp_count = 0;
+
+		// get time at start of program
+		auto start = std::chrono::high_resolution_clock::now();
 
 		// Perform the bubble sort with visualization
 		if (SORTING_ALGORITHM == 1) {
@@ -951,6 +957,8 @@ int main() {
 			SDL_Quit();
 			return -1;
 		}
+		// get time at end of program
+		auto end = std::chrono::high_resolution_clock::now();
 		SDL_RenderPresent(renderer);
 		// draw the final bars with a different color
 		SDL_SetRenderDrawColor(renderer, windowClr.r, windowClr.g, windowClr.b, 255);
@@ -960,13 +968,12 @@ int main() {
 		SDL_RenderPresent(renderer);
 		SDL_SetRenderDrawColor(renderer, barFinalClr.r, barFinalClr.g, barFinalClr.b, 255);
 		for (int i = 0; i < ARRAY_SIZE; i++) {
+			event_handler(&e, renderer, window);
 			SDL_Rect rect = { i * BAR_WIDTH, WINDOW_HEIGHT - array[i], BAR_WIDTH, array[i] };
 			SDL_RenderFillRect(renderer, &rect);
 			SDL_RenderPresent(renderer);
 			SDL_Delay(BAR_WIDTH);
 		}
-		// get time at end of program
-		auto end = std::chrono::high_resolution_clock::now();
 		std::chrono::duration<double> elapsed = end - start;
 		char window_title_final[100];
 		if (SORTING_ALGORITHM == 1) {
