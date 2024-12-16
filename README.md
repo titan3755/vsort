@@ -24,8 +24,12 @@ A simple sorting algorithm visualizer using SDL2 and C++
 --> Fixed window title freezing bug (by making the framerate function run in the main thread) <br>
 --> (...) New bug fixes go here > <br>
 
-// Development will cease and the application will enter production upon completion of these feature additions //
+# App status
+--> Development will cease and the application will enter production upon completion of these feature additions <br>
+--> Development ceased, application is ready for production
 
-** Development ceased, application is ready for production
+# Downloads
+--> Mediafire link for VS2022 project: [https://www.mediafire.com/file/l67sgqvkcauo6fm/vsort-sdl2.7z/file](https://www.mediafire.com/file/l67sgqvkcauo6fm/vsort-sdl2.7z/file)
+--> Executable binaries (Windows Only): [https://www.mediafire.com/file/yh5l60yns8awqux/vsort_sdl2_bin_windows.7z/file](https://www.mediafire.com/file/yh5l60yns8awqux/vsort_sdl2_bin_windows.7z/file)
 
 
