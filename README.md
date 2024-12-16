@@ -29,7 +29,7 @@ A simple sorting algorithm visualizer using SDL2 and C++
 --> Development ceased, application is ready for production
 
 # Downloads
---> Mediafire link for VS2022 project: [https://www.mediafire.com/file/l67sgqvkcauo6fm/vsort-sdl2.7z/file](https://www.mediafire.com/file/l67sgqvkcauo6fm/vsort-sdl2.7z/file)
+--> Mediafire link for VS2022 project: [https://www.mediafire.com/file/l67sgqvkcauo6fm/vsort-sdl2.7z/file](https://www.mediafire.com/file/l67sgqvkcauo6fm/vsort-sdl2.7z/file) <br>
 --> Executable binaries (Windows Only): [https://www.mediafire.com/file/yh5l60yns8awqux/vsort_sdl2_bin_windows.7z/file](https://www.mediafire.com/file/yh5l60yns8awqux/vsort_sdl2_bin_windows.7z/file)
 
 
