@@ -22,6 +22,6 @@ A simple sorting algorithm visualizer using SDL2 and C++
 
 // Development will cease and the application will enter production upon completion of these feature additions //
 
-** Development cease, application is ready for production
+** Development ceased, application is ready for production
 
 
